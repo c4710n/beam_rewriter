@@ -1,21 +1,11 @@
-# BeamRewriter
+# beam_rewriter
 
-**TODO: Add description**
+Rewrite BEAM files with ease.
 
-## Installation
+## References
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `beam_rewriter` to your list of dependencies in `mix.exs`:
+- [6.2. The BEAM File Format of The Erlang Runtime System](https://blog.stenmans.org/theBeamBook/#BEAM_files)
 
-```elixir
-def deps do
-  [
-    {:beam_rewriter, "~> 0.1.0"}
-  ]
-end
-```
+## License
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/beam_rewriter>.
-
+MIT
