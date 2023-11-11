@@ -2,6 +2,16 @@
 
 Rewrite BEAM files with ease.
 
+## Notice!
+
+This project is still in development.
+
+Right now, I'm stuck on the issue of "encoding/decoding chunk data". As described [here](https://blog.stenmans.org/theBeamBook/#BEAM_files), almost all the chunks have their own unique data format, but this documentation only covers a limited number of chunks, lacking the chunks what I need, such as _Line_ chunk.
+
+Before proceeding with the development, I need to understand the data format of all the chunks. However, with my limited experience of C or Erlang, it's difficult to dig the data format. Therefore, the development is indefinitely postponed.
+
+If you have knowledge in this area, please feel free to reach out to me.
+
 ## Build
 
 ```
