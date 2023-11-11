@@ -2,6 +2,14 @@
 
 Rewrite BEAM files with ease.
 
+## Build
+
+```console
+$ mix escript.build
+```
+
+Then, the generated escript will be placed at `escript/beam_rewriter`.
+
 ## Usage
 
 ### Syntax
@@ -33,7 +41,3 @@ $ beam_rewriter "**/*.beam" \
 ## License
 
 MIT
-
-```
-
-```
