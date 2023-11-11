@@ -4,7 +4,7 @@ Rewrite BEAM files with ease.
 
 ## Build
 
-```console
+```
 $ mix escript.build
 ```
 
@@ -20,16 +20,29 @@ beam_rewriter <wildcard> \
   --delete-chunk <chunk name>
 ```
 
-### An example
+### Examples
 
-```console
-$ beam_rewriter ./parser.beam ./run.beam \
+```
+# substitue string in a chunk
+$ beam_rewriter ./parser.beam \
+  --substitute-chunk Line "/nix/store" "/nix-store"
+
+# delete a chunk
+$ beam_rewriter ./parser.beam \
   --delete-chunk Dbgi \
 
-$ beam_rewriter "**/*.beam" \
+# substitue string in a chunk, and delete a chunk
+$ beam_rewriter ./parser.beam \
   --substitute-chunk Line "/nix/store" "/nix-store" \
-  --delete-chunk CInf \
   --delete-chunk Dbgi \
+
+# specify files by a wildcard
+$ beam_rewriter **/*.beam \
+  --substitute-chunk Line "/nix/store" "/nix-store"
+
+# specify files by a wildcard and multiple filenames
+$ beam_rewriter *.beam lib/parser.beam lib/compiler.beam \
+  --substitute-chunk Line "/nix/store" "/nix-store"
 ```
 
 > In pratice, you shouldn't delete arbitrary chunks. Here is just a demonstration of how to use this program.
