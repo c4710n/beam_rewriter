@@ -11,6 +11,7 @@ defmodule BeamRewriter do
 
   """
 
+  alias __MODULE__.BadRun
   alias __MODULE__.Rule
 
   @doc """
@@ -26,16 +27,34 @@ defmodule BeamRewriter do
   @doc """
   Processes and rewrite the BEAM file.
   """
-  def rewrite!(file, named_rules) do
+  def rewrite!(file, named_rules) when is_binary(file) do
     file
     |> process(named_rules)
     |> write_chunks!(file)
   end
 
+  def rewrite!([], _named_rules) do
+    raise BadRun, "no files to rewrite, please check the specified filenames or wildcard"
+  end
+
+  def rewrite!(files, named_rules) when is_list(files) do
+    for file <- files do
+      file
+      |> process(named_rules)
+      |> write_chunks!(file)
+    end
+  end
+
   defp read_beam(file) do
     bytes = File.read!(file)
-    <<"FOR1", size::integer-size(32), "BEAM", chunks::bytes>> = bytes
-    {size, read_chunks(chunks, [])}
+
+    case bytes do
+      <<"FOR1", size::integer-size(32), "BEAM", chunks::bytes>> ->
+        {size, read_chunks(chunks, [])}
+
+      _ ->
+        raise BadRun, "invalid BEAM file - #{file}"
+    end
   end
 
   defp read_chunks(<<n, a, m, e, size::integer-size(32), tail::bytes>>, acc) do
@@ -101,4 +120,8 @@ defmodule BeamRewriter do
     {:ok, binary} = :beam_lib.build_module(chunks)
     File.write!(file, binary)
   end
+end
+
+defmodule BeamRewriter.BadRun do
+  defexception [:message]
 end

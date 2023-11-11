@@ -9,25 +9,22 @@ Rewrite BEAM files with ease.
 ```
 beam_rewriter <wildcard> \
   --substitute-chunk <chunk name> <pattern> <replacement> \
-  --remove-chunk <chunk name>
+  --delete-chunk <chunk name>
 ```
 
 ### An example
 
 ```console
-$ beam_rewriter "**/*.wildcard" \
-  --substitute-chunk Line "lib/src/elixir" "lib/elixir" \
-  --remove-chunk CInf \
-  --remove-chunk Dbgi \
+$ beam_rewriter ./parser.beam ./run.beam \
+  --delete-chunk Dbgi \
+
+$ beam_rewriter "**/*.beam" \
+  --substitute-chunk Line "/nix/store" "/nix-store" \
+  --delete-chunk CInf \
+  --delete-chunk Dbgi \
 ```
 
-> In pratice, you shouldn't remove arbitrary chunks. Here is just a demonstration of how to use this program.
-
-Above command:
-
-1. removes `CInf` chunk
-2. removes `Dbgi` chunk
-3. substitutes `lib/src/elixir` with `lib/elixir` for `Line` chunk
+> In pratice, you shouldn't delete arbitrary chunks. Here is just a demonstration of how to use this program.
 
 ## References
 
