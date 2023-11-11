@@ -11,6 +11,7 @@ defmodule BeamRewriter do
 
   """
 
+  require Logger
   alias __MODULE__.BadRun
   alias __MODULE__.Rule
 
@@ -50,6 +51,7 @@ defmodule BeamRewriter do
 
     case bytes do
       <<"FOR1", size::integer-size(32), "BEAM", chunks::bytes>> ->
+        Logger.info("process #{file}")
         {size, read_chunks(chunks, [])}
 
       _ ->
