@@ -1,14 +1,17 @@
 defmodule BeamRewriter.MixProject do
   use Mix.Project
 
+  @app :beam_rewriter
+
   def project do
     [
-      app: :beam_rewriter,
+      app: @app,
       version: "0.1.0",
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript()
     ]
   end
 
@@ -27,6 +30,13 @@ defmodule BeamRewriter.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ]
+  end
+
+  defp escript do
+    [
+      main_module: BeamRewriter.CLI,
+      path: "escript/#{@app}"
     ]
   end
 end

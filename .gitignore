@@ -24,3 +24,6 @@ beam_rewriter-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Ignore escript
+/escript/
