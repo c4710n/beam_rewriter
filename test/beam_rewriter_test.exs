@@ -3,7 +3,7 @@ defmodule BeamRewriterTest do
   alias BeamRewriter.Rule
   doctest BeamRewriter
 
-  @example_beam_file Path.expand("./example-beams/elixir_parser.beam", __DIR__)
+  @example_beam_file Path.expand("./example-beam-files/elixir_parser.beam", __DIR__)
   @example_beam_chunk_names @example_beam_file
                             |> BeamHelper.read()
                             |> BeamHelper.extract_names()
