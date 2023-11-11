@@ -30,8 +30,14 @@ defmodule BeamRewriter.CLI do
     end
   end
 
+  # TODO: provide usage instead of a link to users.
   defp abort(error) do
-    IO.write(:stderr, "#{error.message}\n")
+    IO.write(:stderr, """
+    #{error.message}
+
+    Visit https://github.com/c4710n/beam_rewriter for more details.
+    """)
+
     System.stop(1)
   end
 
