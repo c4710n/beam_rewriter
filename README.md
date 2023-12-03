@@ -2,7 +2,13 @@
 
 Rewrite BEAM files with ease.
 
-## Notice!
+## Notice #2
+
+This project is abandoned, due to that I have found a way to remove source name references from BEAM files —— `deterministic` option of [Erlang compiler](https://www.erlang.org/doc/man/compile).
+
+Then, I have no need to modify _Line_ chunk.
+
+## Notice #1
 
 This project is still in development.
 
